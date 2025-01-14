@@ -1,8 +1,9 @@
 # :bangbang: **Data Structure Project for 2nd Semester**  :bangbang:
 
 ##  :child: :card_index: **sorting_cardgame** :child: :card_index:
-One of my project for Data Structure 2nd Semester. The project is a simple sorting cardgame app using various type of sorting 
-At first, Robofight Card (fictional) has 3 information : Card code, Power, HP.
+One of my project for Data Structure 2nd Semester. The project is a simple sorting cardgame app using various type of sorting.
+
+Robofight Card (fictional) has 3 information : Card code, Power, HP.
 
 ![DataTable](https://github.com/user-attachments/assets/af016083-8387-4c64-80f2-1a32781fe2f0)
 
