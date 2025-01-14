@@ -13,13 +13,18 @@ void QuickSortAscending(int Numbers[], int ArraySize);
 void ShellSortAscending(int Numbers[], int ArraySize);
 
 int main(){
-    int CodeCount = 0, PowerCount = 0, HPCount = 0;
-    int CardsCode[50];
-    int CardsPower[50];
-    int Temp[50];
-    int CardsHP[50];
+    int CodeCount = 50, PowerCount = 23, HPCount = 50; // there is a bug if you use PowerCount exceed the data, so i use 23
+    int CardsCode[CodeCount]= { 195, 432, 351, 140, 247, 258, 179, 316, 478, 510, 
+                                174, 375, 427, 414, 152, 469, 537, 532, 473, 264, 
+                                360, 172, 164};
+    int CardsPower[PowerCount]= {4000, 5000, 4250, 3500, 5250, 4750, 6250, 5500, 5750, 6000, 
+                                 5000, 6000, 7500, 6500, 6250, 4250, 7000, 6750, 4500, 4750, 
+                                 5500, 5000, 4750};
+    int Temp[CodeCount];
+    int CardsHP[HPCount]= { 3000, 4500, 4500, 5000, 4250, 3750, 4750, 4500, 5500, 6000, 
+                            4750, 5750, 6250, 5250, 5000, 3750, 6000, 5250, 4750, 5250, 
+                            4250, 5250, 4500};
     int Choice;
-
     char Login = 'y';
     
     while(Login == 'y'){
@@ -103,6 +108,9 @@ int main(){
                     BubbleSortAscending(CardsCode,CodeCount);
                     cout << "Sorted RoboFight's Card codes:\n";
                     for (int j = 0; j < CodeCount; j++){
+                        if(CardsCode[j] == 0){
+                            ignore;
+                        }
                         cout << CardsCode[j] << " ";
                     } 
                     cout << endl << endl;
@@ -114,9 +122,12 @@ int main(){
                 case 2:
                     InsertionSortDescending(CardsCode,CodeCount);
                     cout << "Sorted RoboFight's Card codes:\n";
-                    for(int j = 0; j < CodeCount; j++){
+                    for (int j = 0; j < CodeCount; j++){
+                        if(CardsCode[j] == 0){
+                            ignore;
+                        }
                         cout << CardsCode[j] << " ";
-                    }
+                    } 
                     cout << endl << endl;
                     cin.ignore();
                     cout << "Press Enter to continue";
@@ -127,8 +138,11 @@ int main(){
                     SelectionSortAscending(CardsPower,PowerCount); 
                     cout << "Sorted RoboFight's Card Power:\n";
                     for (int j = 0; j < PowerCount; j++){
+                        if(CardsPower[j] == 0){
+                            ignore;
+                        }
                         cout << CardsPower[j] << " ";
-                    }
+                    } 
                     cout << endl << endl;
                     cin.ignore();
                     cout << "Press Enter to continue";
@@ -139,8 +153,11 @@ int main(){
                     MergeSortDescending(CardsPower,Temp,PowerCount);
                     cout << "Sorted RoboFight's Card Power:\n";
                     for (int j = 0; j < PowerCount; j++){
+                        if(CardsPower[j] == 0){
+                            ignore;
+                        }
                         cout << CardsPower[j] << " ";
-                    }
+                    } 
                     cout << endl << endl;
                     cin.ignore();
                     cout << "Press Enter to continue";
@@ -151,8 +168,11 @@ int main(){
                     QuickSortAscending(CardsHP,HPCount); 
                     cout << "Sorted RoboFight's Card HP:\n";
                     for (int j = 0; j < HPCount; j++){
+                        if(CardsHP[j] == 0){
+                            ignore;
+                        }
                         cout << CardsHP[j] << " ";
-                    }
+                    } 
                     cout << endl << endl;
                     cin.ignore();
                     cout << "Press Enter to continue";
@@ -163,8 +183,11 @@ int main(){
                     HeapSortDescending(CardsHP,HPCount); 
                     cout << "Sorted RoboFight's Card HP:\n";
                     for (int j = 0; j < HPCount; j++){
+                        if(CardsHP[j] == 0){
+                            ignore;
+                        }
                         cout << CardsHP[j] << " ";
-                    }
+                    } 
                     cout << endl << endl;
                     cin.ignore();
                     cout << "Press Enter to continue";
@@ -340,22 +363,21 @@ void HeapSortDescending(int Numbers[], int ArraySize){ //revisi
 }
 
 void ShiftDown(int Numbers[], int Root, int Bottom){
-    int Done = 0, MaxChild, Temp;
-    while ((Root * 2 <= Bottom) && (!Done)){
-        if (Root * 2 == Bottom || Numbers[Root * 2] >= Numbers[Root * 2 + 1]) { 
-            MaxChild = Root * 2;
-        } 
-        else {
-            MaxChild = Root * 2 + 1;
+    int Done = 0, MinChild, Temp;
+    while ((Root * 2 + 1 <= Bottom) && (!Done)) {
+        if (Root * 2 + 1 == Bottom || Numbers[Root * 2] <= Numbers[Root * 2 + 1]) {
+            MinChild = Root * 2;
+        } else {
+            MinChild = Root * 2 + 1;
         }
 
-        if (Numbers[Root] < Numbers[MaxChild]) {
+        if (Numbers[Root] > Numbers[MinChild]) {
             Temp = Numbers[Root];
-            Numbers[Root] = Numbers[MaxChild];
-            Numbers[MaxChild] = Temp;
-            Root = MaxChild;
-        } 
-        else {
+            Numbers[Root] = Numbers[MinChild];
+            Numbers[MinChild] = Temp;
+
+            Root = MinChild;
+        } else {
             Done = 1;
         }
     }
