@@ -1,7 +1,7 @@
 # :bangbang: **Data Structure Project for 2nd Semester**  :bangbang:
 
-##  :child: :card_index: **sorting_cardgame** :child: :card_index:
-One of my project for Data Structure 2nd Semester. The project is a simple sorting cardgame app using various type of sorting.
+##  :child: :card_index: **sorting_searching_cardgame** :child: :card_index:
+One of my project for Data Structure 2nd Semester. The project is a simple sorting and searching cardgame app using various type of algorithms.
 
 Robofight Card (fictional) has 3 information : Card code, Power, HP.
 
@@ -14,6 +14,14 @@ User can sort the card by using 6 ways
 4. Sorting based on Power (descending)__________ *(Merge Sort)*
 5. Sorting based on HP (ascending)_______________ *(Quick Sort)*
 6. Sorting based on HP (descending)______________ *(Heap Sort)*
+
+And
+
+Search the card by using 3 ways 
+1. Finding based on Card Code___________________ *(Sequential Search)*
+2. Finding based on Power________________________ *(Binary Search) (Sorted first by bubble sort)* 
+3. Finding based on HP____________________________ *(Interpolation Search) (Sorted first by bubble sort)*
+
 
 The project is developed using Functional programming, C++ language, runs on CLI, and only requires iostream
 
