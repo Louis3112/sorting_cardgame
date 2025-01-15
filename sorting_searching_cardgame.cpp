@@ -1,5 +1,7 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
+
 void BubbleSortAscending(int Numbers[], int ArraySize);
 void InsertionSortDescending(int Numbers[], int ArraySize);
 void SelectionSortAscending(int Numbers[], int ArraySize);
@@ -11,6 +13,10 @@ void HeapSortDescending(int Numbers[], int ArraySize);
 void QuickSortAscending(int Numbers[], int ArraySize);
     void QSort(int Numbers[], int Left, int Right);
 void ShellSortAscending(int Numbers[], int ArraySize);
+
+bool SequentialSearch(int Numbers[], int Find, int ArraySize);
+bool BinarySearch(int Numbers[], int Find, int ArraySize);
+bool InterpolationSearch(int Numbers[], int Find, int ArraySize);
 
 int main(){
     int CodeCount = 50, PowerCount = 23, HPCount = 50; // there is a bug if you use PowerCount exceed the data, so i use 23
@@ -25,14 +31,16 @@ int main(){
                             4750, 5750, 6250, 5250, 5000, 3750, 6000, 5250, 4750, 5250, 
                             4250, 5250, 4500};
     int Choice;
+
     char Login = 'y';
     
     while(Login == 'y'){
         system("cls");
         cout << "==== Sorting RoboFight App ====\n";
         cout << "1. Insert all your RoboFight cards \n";
-        cout << "2. Sort all your RoboFight card\n";
-        cout << "3. Exit\n";
+        cout << "2. Sort all your RoboFight cards\n";
+        cout << "3. Find your Robofight cards\n";
+        cout << "4. Exit\n";
         cout << "> ";
         cin >> Choice;
 
@@ -86,7 +94,9 @@ int main(){
             break;
 
             default:
+                cin.ignore();
                 cout << "Invalid input\n";
+                cin.get();
             break;
             } 
         }
@@ -111,7 +121,9 @@ int main(){
                         if(CardsCode[j] == 0){
                             ignore;
                         }
+                        else{
                         cout << CardsCode[j] << " ";
+                        }
                     } 
                     cout << endl << endl;
                     cin.ignore();
@@ -126,7 +138,9 @@ int main(){
                         if(CardsCode[j] == 0){
                             ignore;
                         }
+                        else{
                         cout << CardsCode[j] << " ";
+                        }
                     } 
                     cout << endl << endl;
                     cin.ignore();
@@ -141,7 +155,9 @@ int main(){
                         if(CardsPower[j] == 0){
                             ignore;
                         }
+                        else{
                         cout << CardsPower[j] << " ";
+                        }
                     } 
                     cout << endl << endl;
                     cin.ignore();
@@ -156,7 +172,9 @@ int main(){
                         if(CardsPower[j] == 0){
                             ignore;
                         }
+                        else{
                         cout << CardsPower[j] << " ";
+                        }
                     } 
                     cout << endl << endl;
                     cin.ignore();
@@ -171,7 +189,9 @@ int main(){
                         if(CardsHP[j] == 0){
                             ignore;
                         }
+                        else{
                         cout << CardsHP[j] << " ";
+                        }
                     } 
                     cout << endl << endl;
                     cin.ignore();
@@ -186,7 +206,9 @@ int main(){
                         if(CardsHP[j] == 0){
                             ignore;
                         }
+                        else{
                         cout << CardsHP[j] << " ";
+                        }
                     } 
                     cout << endl << endl;
                     cin.ignore();
@@ -195,12 +217,98 @@ int main(){
                 break;
 
                 default:
+                    cin.ignore();
                     cout << "Invalid input\n";
+                    cin.get();
                 break;
             }
         }
 
         if(Choice == 3){
+            int ChoiceSearch;
+            bool Found;
+            cout << "Find your RoboFight cards\n";
+            cout << "1. Based on Card Code\n";
+            cout << "2. Based on Power\n";
+            cout << "3. Based on HP\n";
+            cout << "> ";
+            cin >> ChoiceSearch;
+
+            switch (ChoiceSearch){
+            case 1:
+                int SearchCode;
+                cout << "Find your card code > ";
+                cin >> SearchCode;
+                Found = SequentialSearch(CardsCode, SearchCode, CodeCount);
+                
+                if(Found == true){
+                    cout << SearchCode << " is found, you have card with code " << SearchCode << endl << endl;
+                    cin.ignore();
+                    cout << "Press Enter to continue\n";
+                    cin.get();
+                }
+
+                else if(Found == false){
+                    cout << SearchCode << " is not found, you do not have card with code " << SearchCode << endl << endl;
+                    cin.ignore();
+                    cout << "Press Enter to continue\n";
+                    cin.get();
+                }
+            break;
+            
+            case 2:
+                int SearchPower;
+                cout << "Find your card power > ";
+                cin >> SearchPower;
+                BubbleSortAscending(CardsPower, PowerCount);
+                Found = BinarySearch(CardsPower, SearchPower, PowerCount);
+
+                if(Found == true){
+                    cout << SearchPower << " is found, you have card with power " << SearchPower << endl << endl;
+                    cin.ignore();
+                    cout << "Press Enter to continue\n";
+                    cin.get();
+                }
+
+                else if(Found == false){
+                    cout << SearchPower << " is not found, you do not have card with power " << SearchPower << endl << endl;
+                    cin.ignore();
+                    cout << "Press Enter to continue\n";
+                    cin.get();
+                }
+            break;
+            
+            case 3:
+                int SearchHP;
+                cout << "Find your card HP > ";
+                cin >> SearchHP;
+                BubbleSortAscending(CardsHP, HPCount);
+                Found = InterpolationSearch(CardsHP, SearchHP, HPCount);
+
+                if(Found == true){
+                    cout << SearchHP << " is found, you have card with HP " << SearchHP << endl << endl;
+                    cin.ignore();
+                    cout << "Press Enter to continue\n";
+                    cin.get();
+                }
+
+                else if(Found == false){
+                    cout << SearchHP << " is not found, you do not have card with HP " << SearchHP << endl << endl;
+                    cin.ignore();
+                    cout << "Press Enter to continue\n";
+                    cin.get();
+                }
+            break;
+
+            default:
+                cin.ignore();
+                cout << "Invalid input\n";
+                cin.get();
+            break;
+            }
+        }
+
+        if(Choice == 4){
             char Exit;
             cout << "Are you sure to exit the application? (y/n)\n";
             cout << "> ";
@@ -218,6 +326,91 @@ int main(){
     }
     return 0; 
 }
+
+bool SequentialSearch(int Numbers[], int Find, int ArraySize){
+    int i = 0;
+    while (i < ArraySize && Numbers[i] != Find){
+        i++;    
+    }       
+    if (i < ArraySize){
+        return true;
+    }
+    else{
+        return false;
+    }      
+}
+
+bool BinarySearch(int Numbers[], int Find, int ArraySize){
+    int Left, Mid, Right;
+    Left = 0;
+    Right = ArraySize - 1;
+    while (Left <= Right){ // Selama awalan, pertengahan, akhiran tidak berada di data yg sama dan Found masih 0
+        Mid = (Left + Right) / 2; // Dibuat patokan mid, dimana awalan dan akhiran
+        if (Numbers[Mid] == Find){ // Jika Mid menemukan angka yg dicari, maka selesai
+            return true;
+        }
+        else if (Find < Numbers[Mid]){ // Jika data lebih kecil dari Mid
+            Right = Mid - 1; // maka ruang pencarian diperkecil ke kiri
+        }
+        else{ // Jika data lebih besar dari Mid
+            Left = Mid + 1; // maka ruang pencarian diperkecil ke kanan
+        }
+    }
+    return false; 
+}
+
+/*bool InterpolationSearch(int Numbers[], int Find, int ArraySize){
+    int Low = 0, High = ArraySize - 1; // Low dimulai dari awal array, High dimulai dari akhir array
+    float Pos1; 
+    int Pos;
+
+    do{
+        Pos1 = (float)(Find-Numbers[Low])/(Numbers[High]-Numbers[Low]) * (High-Low) + Low; // rumus interpolasi
+        Pos = Pos1; // maka dimasukkan dalam index
+
+        if(Numbers[Pos] == Find){ // jika data ditemukan sebelum Find, maka data ditemukan 
+            return true; // maka mengembalikan nilai true
+        }
+
+        if (Numbers[Pos] > Find){ // Jika hasil interpolasi masih lebih besar, maka High dikurangi hasil interpolasi
+            High = Pos - 1;
+        }
+
+        else if(Numbers[Pos] < Find){ // Jika hasil interpolasi masih lebih kecil, maka Low dijumlahkan hasil interpolasi
+            Low = Pos + 1; 
+        }
+    } while (Find >= Numbers[Low] && Find <= Numbers[High]); //selama Find berada di range array 
+    return false;
+}*/
+
+bool InterpolationSearch(int Numbers[], int Find, int ArraySize){
+    int Low = 0, High = ArraySize - 1;
+    float Pos1; 
+    int Pos;
+
+    do{
+        Pos1 = (float)(Find - Numbers[Low]) / (Numbers[High] - Numbers[Low]) * (High - Low) + Low; // rumus interpolasi
+        Pos = static_cast<int>(Pos1); // konversi ke integer
+
+        // Penanganan batas jika Pos di luar rentang array
+        if (Pos < Low || Pos > High) {
+            return false;
+        }
+
+        if (Numbers[Pos] == Find){ // jika data ditemukan sebelum Find, maka data ditemukan 
+            return true;
+        }
+
+        if (Numbers[Pos] < Find){ // Jika hasil interpolasi masih lebih kecil, maka Low dijumlahkan hasil interpolasi
+            Low = Pos + 1; 
+        } else { // Jika hasil interpolasi masih lebih besar, maka High dikurangi hasil interpolasi
+            High = Pos - 1;
+        }
+    } while (Find >= Numbers[Low] && Find <= Numbers[High]); // selama Find berada di range array 
+
+    return false; // Jika loop selesai dan elemen tidak ditemukan, kembalikan false
+}
+
 
 void BubbleSortAscending(int Numbers[], int ArraySize){
     int i,j,temp;
@@ -423,3 +616,103 @@ void QuickSortAscending(int Numbers[], int ArraySize){ // Fungsi QuickSort
 
         //base case terjadi apabila Left == Right == Pivot          
     }
+
+
+/*==== Sorting RoboFight App ====
+1. Insert all your RoboFight cards 
+2. Sort all your RoboFight cards
+3. Find your Robofight cards
+4. Exit
+> 3
+Find your RoboFight cards
+1. Based on Card Code
+2. Based on Power
+3. Based on HP
+> 1
+
+Find your card code > 147
+147 is found, you have card with code 147
+
+Press Enter to continue
+
+
+==== Sorting RoboFight App ====
+1. Insert all your RoboFight cards 
+2. Sort all your RoboFight cards
+3. Find your Robofight cards
+4. Exit
+> 3
+Find your RoboFight cards
+1. Based on Card Code
+2. Based on Power
+3. Based on HP
+> 1
+Find your card code > 100
+100 is not found, you do not have card with code 100
+
+Press Enter to continue
+
+==== Sorting RoboFight App ====
+1. Insert all your RoboFight cards 
+2. Sort all your RoboFight cards
+3. Find your Robofight cards
+4. Exit
+> 3
+Find your RoboFight cards
+1. Based on Card Code
+2. Based on Power
+3. Based on HP
+> 2
+Find your card power > 5000 
+5000 is found, you have card with power 5000
+
+Press Enter to continue
+
+==== Sorting RoboFight App ====
+1. Insert all your RoboFight cards 
+2. Sort all your RoboFight cards
+3. Find your Robofight cards
+4. Exit
+> 3
+Find your RoboFight cards
+1. Based on Card Code
+2. Based on Power
+3. Based on HP
+> 2
+Find your card power > 7750
+7750 is not found, you do not have card with power 7750
+
+Press Enter to continue
+
+==== Sorting RoboFight App ====
+1. Insert all your RoboFight cards 
+2. Sort all your RoboFight cards
+3. Find your Robofight cards
+4. Exit
+> 3 
+Find your RoboFight cards
+1. Based on Card Code
+2. Based on Power
+3. Based on HP
+> 3
+Find your card HP > 5000 
+5000 is found, you have card with HP 5000
+
+Press Enter to continue
+
+==== Sorting RoboFight App ====
+1. Insert all your RoboFight cards 
+2. Sort all your RoboFight cards
+3. Find your Robofight cards
+4. Exit
+> 3 
+Find your RoboFight cards
+1. Based on Card Code
+2. Based on Power
+3. Based on HP
+> 3
+Find your card HP > 5000 
+10000 is found, you have card with HP 10000
+
+Press Enter to continue*/
+
