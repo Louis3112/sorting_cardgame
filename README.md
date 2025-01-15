@@ -29,10 +29,10 @@ There is a [report](https://github.com/user-attachments/files/18406932/085_TI202
 
 ## :arrow_forward: **Installation and Usage** 
 To install this project, please proceed these steps:
-1. Clone the repository: **`git clone https://github.com/Louis3112/sorting_cardgame`**
-2. Navigate to the project directory: **`cd sorting_cardgame`**
-3. Compile the project: **`g++ -o sorting_cardgame sorting_cardgame.cpp`**
-4. Run the project : **`./sorting_cardgame`** (or just simply run with your IDE)
+1. Clone the repository: **`git clone https://github.com/Louis3112/sorting_searching_cardgame`**
+2. Navigate to the project directory: **`cd sorting_searching_cardgame`**
+3. Compile the project: **`g++ -o sorting_searching_cardgame sorting_searching_cardgame.cpp`**
+4. Run the project : **`./sorting_searching_cardgame`** (or just simply run with your IDE)
 
 ## 	:bust_in_silhouette: **Contributing** :bust_in_silhouette:
 If you'd like to contribute or upgrade the project, it would be my pleasure! :smile: 
