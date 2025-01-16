@@ -25,7 +25,8 @@ Search the card by using 3 ways
 
 The project is developed using Functional programming, C++ language, runs on CLI, and only requires iostream
 
-There is a [report](https://github.com/user-attachments/files/18406932/085_TI2023C_Tugas.Sorting.docx) written in Bahasa Indonesia that you can read from.
+There is a [report](https://github.com/user-attachments/files/18406932/085_TI2023C_Tugas.Sorting.docx) 
+written in *Bahasa Indonesia* that you can read from.
 
 ## :arrow_forward: **Installation and Usage** 
 To install this project, please proceed these steps:
