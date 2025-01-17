@@ -23,7 +23,7 @@ Search the card by using 3 ways
 3. Finding based on HP____________________________ *(Interpolation Search) (Sorted first by bubble sort)*
 
 
-The project is developed using Functional programming, C++ language, runs on CLI, and only requires iostream
+The project is developed using Functional programming, C++ language, runs on CLI, and only requires minimum of libraries (iostream and cmath).
 
 There is a [report](https://github.com/user-attachments/files/18406932/085_TI2023C_Tugas.Sorting.docx) 
 written in *Bahasa Indonesia* that you can read from.
